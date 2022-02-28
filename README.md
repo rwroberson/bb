@@ -5,5 +5,5 @@ Give the script a html file with the body of your post, and it automatically com
 
 Of course, be sure to read through the code to include your own file structure and blog information.
 
-This is still very rough, but I've taken some inspiration from [lb](github.com/lukesmithxyz/lb).
+This is still very rough, but I've taken some inspiration from [lb](https://github.com/LukeSmithxyz/lb).
 I recommend you look to his scripts for a much more complete solution.

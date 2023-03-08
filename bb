@@ -33,4 +33,4 @@ cat $HEAD "$BLOCKS/nav.html" $1 "$BLOCKS/footer.html" > $BLOG/$1
 
 BI="<li>$DATE <a href=\"blog\/$1\">$TITLE<\/a><\/li>"
 
-sed -i "s/<!--BB-->.*/<!--BB-->$BI/" $INDEX
+sed -i "s/<!--BB-->.*/<!--BB-->\n$BI/" $INDEX

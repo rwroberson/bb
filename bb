@@ -17,17 +17,24 @@ INDEX=$HOME/doc/website/blogindex.html
 
 # Make temp file
 
-HEAD=$(mktemp)
+FILE=$(mktemp)
 
 # Retrieve title and date
 TITLE="$(grep '<h1' $1 | sed 's/<[^>]*>//g;s/\s/\\ /g')"
 DATE=$(date +%Y-%m-%d)
 
-# Add title and date to head
-sed "s/~/$TITLE/;s/&/$DATE/" $BLOCKS/head.html >> $HEAD
-
 # Build blog post from blocks and draft
-cat $HEAD "$BLOCKS/nav.html" $1 "$BLOCKS/footer.html" > $BLOG/$1
+sed "s/~/$TITLE/;s/&/$DATE/" $BLOCKS/head.html >> $FILE
+echo "<nav>" >> $FILE
+cat "$BLOCKS/nav.html" >> $FILE
+echo "</nav>" >> $FILE
+echo "<body>" >> $FILE
+cat $1 >> $FILE
+echo "</body>" >> $FILE
+echo "<footer>" >> $FILE
+cat "$BLOCKS/footer.html" >> $FILE
+echo "</footer>" >> $FILE
+cat $FILE > $BLOG/$1
 
 # Add to blog index
 
